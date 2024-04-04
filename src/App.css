@@ -1,0 +1,11 @@
+button {
+    margin-right: 10px; 
+    cursor: pointer;
+}
+.customer{
+    font-size: 2rem;
+    border: 1px solid black;
+    margin: 10px;
+    cursor: pointer;
+    display: inline-block;
+}
