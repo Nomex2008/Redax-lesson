@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
-import { addCustomerAction, removeCustomerAction } from './store/customerReducer';
+import { addCustomerAction, removeCustomerAction, deleteCustomerAction } from './store/customerReducer';
 
 function App() {
   const dispatch = useDispatch()
@@ -29,7 +29,7 @@ function App() {
   }
 
   const deleteClient = () => {
-
+    dispatch(deleteCustomerAction())
   }
 
   return (
