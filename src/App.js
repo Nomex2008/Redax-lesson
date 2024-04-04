@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
+import { addCustomerAction, removeCustomerAction } from './store/customerReducer';
 
 function App() {
   const dispatch = useDispatch()
@@ -8,11 +9,11 @@ function App() {
   //console.log(cash)
 
   const addCash = (cash) => {
-    dispatch({type:'ADD_CASH', payloud: cash})
+    dispatch({type:'ADD_CASH', payload: cash})
   }
 
   const getCash = (cash) => {
-    dispatch({type:'GET_CASH',payloud: cash})
+    dispatch({type:'GET_CASH',payload: cash})
   }
 
   const addCustomer = (name) => {
@@ -20,11 +21,15 @@ function App() {
       name,
       id:Date.now(),
     }
-    dispatch({type: 'ADD_CUSTOMER', payload:  customer})
+    dispatch(addCustomerAction(customer))
   }
 
   const removeCustomer = (customer) => {
-    dispatch({type: 'REMOVE_CUSTOMER', payload: customer.id })
+    dispatch(removeCustomerAction(customer.id))
+  }
+
+  const deleteClient = () => {
+
   }
 
   return (
@@ -34,7 +39,7 @@ function App() {
           <button onClick={() => addCash(Number(prompt(cash)))}>Add cash</button>
           <button onClick={() => getCash(Number(prompt(cash)))}>Get cash</button>
           <button onClick={() => addCustomer(prompt())}>Add client</button>
-          <button onClick={() => getCash(Number(prompt(cash)))}>Delete client</button>
+          <button onClick={() => deleteClient()}>Delete all client</button>
       </div>
 
         {customers.length > 0 ?
